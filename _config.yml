@@ -14,13 +14,10 @@ author: Divya Ponda
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  About Me: "aboutme"
+  About Me: "about"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
     - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
-  About Me: "about me!"
-  Resources:
 
 # --- Logo --- #
 
