@@ -1,4 +1,4 @@
-# Digimon!
+# Pokemon!
 
 ## Purpose
 In this lab we obtained data using a web API, used Python classes to organize information, and used Python for data analysis.
@@ -104,5 +104,10 @@ if color1 not in colors.keys():
 ### My Answer: 
 When I stated *print(colors)*,my answer was **Koromon,Tsunomon and Tsumemon**.
 
+## Process
+
+The first thing I did in this lab was importing the API and converting the csv. This step was pretty straightforward! Then, we had to use the data and answer the questions. In order to do so, I first drew out visual diagrams to help me see all of the elements I had to consider when answering the questions. After doing so, it basically flowed!
+All of the code that I used is included in the other parts of this lab!
+
 ## Sources
-I worked on this lab with Larry, and asked Mr. Lee some questions about it as well. I also referred to W3 Schools in order to better understand Python Dictionaries.
+I met with with Mr. Lee and Feingold for this lab! 
