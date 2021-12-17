@@ -1,0 +1,80 @@
+# Digimon!
+
+## Purpose
+In this lab we obtained data using a web API, used Python classes to organize information, and used Python for data analysis.
+
+## Starting Out
+
+My first step in the process was to use the provided API to generate a csv file.
+
+``import requests
+import csv
+ 
+BASE_URL = "https://hm-cs.herokuapp.com"
+ENDPOINT = "/socks"
+API_KEY = "ArtOfDataKEY123"
+idx=0 
+payload = {'key': API_KEY, 'idx': 0}
+response = requests.get(BASE_URL + ENDPOINT , params=payload)
+data = response.text
+while response.ok:
+    payload = {'key': API_KEY, 'idx': idx}
+    response = requests.get(BASE_URL + ENDPOINT , params=payload)
+    data = response.text
+    idx += 1 
+if not response.ok:
+ print(response.status_code, response.text)
+```
+
+After importing the API, I created a CSV using the data obtained! 
+
+## Answering the Questions
+
+### 1. Discuss how you used the API to obtain the dataset.
+</br>
+
+In order to answer this question, I figured that I would need to take all of the speeds of each digimon, add them together, and then divide this value by the  number of digimon in order to compute the average speed for ALL digimon. So, I used a counter variable to count everytime a digimon's speed was added to the total, and incrimented it by 1 everytime the for loop was run. 
+```python
+    counter = 0.0
+    total = 0.0
+
+    for digi in table:
+        total += (float(table[digi]["speed"]))
+        counter += 1
+    print(total / counter)
+```
+### My Answer: 
+The average speed of all of the digimon is **120.40160642570281**.
+
+### 2. Write a function that can count the number of Digimon with a specific attribute.  
+
+
+In order to do this, I created a function called **count_digimon** that counts the number of digimon that have a specific value of a specific attribute. So, I created a variable called **count** to count for each digimon with that value and to store it as a dictionary value. Then I returned count, sending the final value back to the function for it to print. 
+```python
+def count_digimon(attr, value):
+    count = 0
+    for digi in table:
+        if table[digi][attr]== value:
+            count+=1
+    return count
+
+print(count_digimon ("Type", "Vaccine"))
+```
+### My Answer: 
+When I stated *print(count_digimon("Type", "Vaccine"))*, my answer was **70**.
+
+### 3. The Digimon on your team are restricted by the total amount of Memory that they need. If your team only has 15 Memory, name a team of up to 3 Digimon that has at least 300 attack in total.
+
+In order to do this, I first extracted the main components of the task, and figured that I needed a team of 3 digimon, with an attack of at least 300 in total, and a memory of 15 or less. So I used a for loop and used a team variable to ensure that exactly 3 digimon would be printed, and these digimon would each have a attack greater than 100, and a memory of 5 or less. In order to ensure I had exactly 3 digimon being printed, I used a team variable, set it equal to zero, an incremented it so that everytime the for loop ran it would increase by one, and when it reached three, the loop stopped running. 
+```python
+team=0
+for digi in table :
+    if float(table[digi]["attack"]) > 100.0 and float(table[digi]["memory"]) < 6 and team < 3:
+        team+=1
+        print(digi)
+```
+### My Answer: 
+When I stated *print(digi)*,my answer was **Koromon,Tsunomon and Tsumemon**.
+
+## Sources
+I worked on this lab with Larry, and asked Mr. Lee some questions about it as well. I also referred to W3 Schools in order to better understand Python Dictionaries.
