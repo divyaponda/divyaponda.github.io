@@ -32,7 +32,40 @@ if not response.ok:
 ### My Answer: 
 I used the API to obtain the dataset by using the API Key, Base URL, and Endpoint, and then used the ged function to get the data!
 
-### 2. Write a function that can count the number of Digimon with a specific attribute.  
+### Creating a Sock Class
+
+'''
+class Socksie:
+
+    def __init__(self, name, color1, color2, variation):
+        self.name = name
+        self.variation = variation
+        self.color1 = color1
+        self.color2 = color2
+    def __str__(self) -> str:
+        return f"{self.name},{self.variation},{self.color1},{self.color2}"
+'''
+
+
+### Creating The Table
+
+'''
+with open("datasets/socksie.csv", encoding="utf-8-sig") as f:
+    data = list(csv.DictReader(f)) 
+    table = {} 
+    colors={}
+
+    for socksie in data:
+        color1 = socksie["Color 1"] 
+        color2 = socksie["Color 2"]
+        variation= socksie["Variation"]
+        name = socksie["Name"]
+        if name not in table:
+            table[name] = []
+        table[name].append({"variation": variation, "color1": color1, "color2": color2})
+
+'''
+### 2. Which sock has the most variations? If there is more than one answer, then list all of them.
 
 
 In order to do this, I created a function called **count_digimon** that counts the number of digimon that have a specific value of a specific attribute. So, I created a variable called **count** to count for each digimon with that value and to store it as a dictionary value. Then I returned count, sending the final value back to the function for it to print. 
