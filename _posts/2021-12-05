@@ -3,9 +3,12 @@
 ## Purpose
 In this lab we obtained data using a web API, used Python classes to organize information, and used Python for data analysis.
 
-## Starting Out
 
-My first step in the process was to use the provided API to generate a csv file.
+## Answering the Questions
+
+### 1. Discuss how you used the API to obtain the dataset.
+</br>
+
 
 ``import requests
 import csv
@@ -26,25 +29,8 @@ if not response.ok:
  print(response.status_code, response.text)
 ```
 
-After importing the API, I created a CSV using the data obtained! 
-
-## Answering the Questions
-
-### 1. Discuss how you used the API to obtain the dataset.
-</br>
-
-In order to answer this question, I figured that I would need to take all of the speeds of each digimon, add them together, and then divide this value by the  number of digimon in order to compute the average speed for ALL digimon. So, I used a counter variable to count everytime a digimon's speed was added to the total, and incrimented it by 1 everytime the for loop was run. 
-```python
-    counter = 0.0
-    total = 0.0
-
-    for digi in table:
-        total += (float(table[digi]["speed"]))
-        counter += 1
-    print(total / counter)
-```
 ### My Answer: 
-The average speed of all of the digimon is **120.40160642570281**.
+I used the API to obtain the dataset by using the API Key, Base URL, and Endpoint, and then used the ged function to get the data!
 
 ### 2. Write a function that can count the number of Digimon with a specific attribute.  
 
