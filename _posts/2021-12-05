@@ -10,7 +10,7 @@ In this lab we obtained data using a web API, used Python classes to organize in
 </br>
 
 
-``import requests
+```import requests
 import csv
  
 BASE_URL = "https://hm-cs.herokuapp.com"
