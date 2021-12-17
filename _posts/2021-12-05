@@ -34,7 +34,7 @@ I used the API to obtain the dataset by using the API Key, Base URL, and Endpoin
 
 ### Creating a Sock Class
 
-'''
+```
 class Socksie:
 
     def __init__(self, name, color1, color2, variation):
@@ -44,12 +44,12 @@ class Socksie:
         self.color2 = color2
     def __str__(self) -> str:
         return f"{self.name},{self.variation},{self.color1},{self.color2}"
-'''
+```
 
 
 ### Creating The Table
 
-'''
+```
 with open("datasets/socksie.csv", encoding="utf-8-sig") as f:
     data = list(csv.DictReader(f)) 
     table = {} 
@@ -64,36 +64,45 @@ with open("datasets/socksie.csv", encoding="utf-8-sig") as f:
             table[name] = []
         table[name].append({"variation": variation, "color1": color1, "color2": color2})
 
-'''
+```
 ### 2. Which sock has the most variations? If there is more than one answer, then list all of them.
 
 
-In order to do this, I created a function called **count_digimon** that counts the number of digimon that have a specific value of a specific attribute. So, I created a variable called **count** to count for each digimon with that value and to store it as a dictionary value. Then I returned count, sending the final value back to the function for it to print. 
-```python
-def count_digimon(attr, value):
-    count = 0
-    for digi in table:
-        if table[digi][attr]== value:
-            count+=1
-    return count
-
-print(count_digimon ("Type", "Vaccine"))
+In order to do this I created a list of variations and stored the names of the variations with an idx that was equal to 8 in the list. I used 8 as I noticed that it is the maximum number of variations.
+```
+variations=[]
+for name in table:
+        idx = 0
+        for variation in table[name]:
+            idx+=1
+            if idx == 8: 
+                variations.append(name)
+                
+print(variations)
 ```
 ### My Answer: 
-When I stated *print(count_digimon("Type", "Vaccine"))*, my answer was **70**.
+my answer was **[Sock, sock]**
+### 3. How many socks of each color are there? If a sock has two different colors, it should be counted in both. However, if a sock has the same Color1 and Color2, make sure you don’t double count it!
 
-### 3. The Digimon on your team are restricted by the total amount of Memory that they need. If your team only has 15 Memory, name a team of up to 3 Digimon that has at least 300 attack in total.
+In order to figure out the answer to this question, I created a dictionary called colors with keys of color 1 and color 2, and added one to the values of each, and made sure that if color 1 = color 2, I subtracted one from color 1. Then, I printed the colors dictionary. 
 
-In order to do this, I first extracted the main components of the task, and figured that I needed a team of 3 digimon, with an attack of at least 300 in total, and a memory of 15 or less. So I used a for loop and used a team variable to ensure that exactly 3 digimon would be printed, and these digimon would each have a attack greater than 100, and a memory of 5 or less. In order to ensure I had exactly 3 digimon being printed, I used a team variable, set it equal to zero, an incremented it so that everytime the for loop ran it would increase by one, and when it reached three, the loop stopped running. 
-```python
-team=0
-for digi in table :
-    if float(table[digi]["attack"]) > 100.0 and float(table[digi]["memory"]) < 6 and team < 3:
-        team+=1
-        print(digi)
+
+```
+if color1 not in colors.keys():
+            colors[color1]= 1
+        else: 
+            colors[color1]+=1
+        if color2 not in colors.keys():
+            colors[color2]= 1
+        else: 
+            colors[color2]+=1  
+        if color1 == color2 :
+            colors[color1] -=1      
+        
+    print(colors)
 ```
 ### My Answer: 
-When I stated *print(digi)*,my answer was **Koromon,Tsunomon and Tsumemon**.
+When I stated *print(colors)*,my answer was **Koromon,Tsunomon and Tsumemon**.
 
 ## Sources
 I worked on this lab with Larry, and asked Mr. Lee some questions about it as well. I also referred to W3 Schools in order to better understand Python Dictionaries.
